@@ -3,7 +3,7 @@ import { plantList } from '../Datas/PlantLists'
 import '../styles/ShoppingList.css'
 import PlantItem from './PlantItem'
 
-function ShoppingList() {
+function ShoppingList({ cart, updateCart }) {
     const categories = plantList.reduce((elem, plant) => elem.includes(plant.category) ? elem : elem.concat(plant.category), [])
 
     return (
@@ -15,14 +15,18 @@ function ShoppingList() {
             </ul>
 
             <ul className='plant-list'>
-				{plantList.map(({ id, cover, name, water, light }) => (
-					<PlantItem
+				{plantList.map(({ id, cover, name, water, light , price}) => (
+                    <div>
+                        <PlantItem
 						id={id}
 						cover={cover}
 						name={name}
 						water={water}
 						light={light}
 					/>
+                    <button onClick={() => updateCart(cart + 1)}>Ajouter</button>
+                    </div>
+					
 				))}
 			</ul>
         </div>
