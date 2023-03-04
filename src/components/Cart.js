@@ -1,18 +1,33 @@
 import React from 'react'
+import { useState } from 'react';
 import '../styles/Cart.css'
 function Cart() {
-    let prixMonstera=8,prixLierre=10,prixBouquet=15;
-  return (
+
+  const monsteraPrice = 8
+  const [cart, updateCart] = useState(0);
+  const [isOpen, setIsOpen] = useState(true)
+  function acheter() {
+    updateCart(cart + 1);
+  }
+  return isOpen ? (
     <div className='cart'>
-        <h2>Panier</h2>
-        <ul>
-            <li>1 Monstera {prixMonstera}$ </li>
-            <li>1 Lierre {prixLierre}$</li>
-            <li>1 Bouquet de fleur {prixBouquet}$ </li>
-        </ul>
-        <h2>Total: {prixBouquet+prixLierre+prixMonstera}$ </h2>
+      <button className='cart-toggle-button' onClick={() => setIsOpen(false)}>Fermer</button>
+      <h2>Panier</h2>
+      <div>
+        Monstera : {monsteraPrice}€
+        <button className='cart-add-button' onClick={() => acheter()}>
+          Ajouter
+        </button>
+      </div>
+      <h3>Total : {monsteraPrice * cart}€</h3>
+      <button onClick={() => updateCart(0)}>Vider le panier</button>
+    </div>
+  ) : (
+    <div className='cart-closed'>
+      <button className='cart-toggle-button' onClick={() => setIsOpen(true)}>Ouvrir le Panier</button>
     </div>
   )
+
 }
 
 export default Cart

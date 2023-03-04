@@ -8,8 +8,10 @@ function App() {
   return (
     <div className="App">
       <Banner/>
-      <Cart/>
-      <ShoppingList/>
+      <div className='layout-inner'>
+				<Cart />
+				<ShoppingList />
+			</div>
       <Footer/>
     </div>
   );
