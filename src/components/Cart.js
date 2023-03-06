@@ -11,9 +11,9 @@ function Cart({ cart, updateCart }) {
       <button className='cart-toggle-button' onClick={() => setIsOpen(false)}>Fermer</button>
       <h2>Panier</h2>
       {
-        cart.map(({ name, price, amount }, index) => (
-          <div key={`${name}-${index}`}>
-            {name} {price}€ * {amount}
+        cart.map((plantType, index) => (
+          <div key={`${plantType.name}-${index}`}>
+            {plantType.name} {plantType.price}€ * {plantType.amount}
           </div>
         ))
       }
