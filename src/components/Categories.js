@@ -1,22 +1,25 @@
-import React, { useState } from 'react'
+import React from 'react'
+import '../styles/Categories.css'
 import { plantList } from '../Datas/PlantLists'
 
-function Categories() {
+
+function Categories({categorie,setCategories}) {
+
     const categories = plantList.reduce((elem, plant) => elem.includes(plant.category) ? elem : elem.concat(plant.category), [])
-    const [categorie,setCategories]=useState('all')
+
 
     return (
-        <React.Fragment>
+        <div className='categories'>
             <select value={categorie} onChange={(e) => setCategories(e.target.value)}>
             <option key={"no cat"} value="all">All</option>
                 {categories.map(elem => (
-                    <option onClick={() => console.log(categorie) } key={elem} value={elem}>{elem}</option>
+                    <option key={elem} value={elem}>{elem}</option>
                 ))}
                     
             </select>
-            <button>Reinitialiser</button>
+            <button onClick={()=>setCategories('all')}>Reinitialiser</button>
 
-        </React.Fragment>
+        </div>
     )
 }
 
