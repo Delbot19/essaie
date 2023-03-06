@@ -10,7 +10,7 @@ function Categories({categorie,setCategories}) {
 
     return (
         <div className='categories'>
-            <select value={categorie} onChange={(e) => setCategories(e.target.value)}>
+            <select className='categories-select' value={categorie} onChange={(e) => setCategories(e.target.value)}>
             <option key={"no cat"} value="all">All</option>
                 {categories.map(elem => (
                     <option key={elem} value={elem}>{elem}</option>
@@ -18,7 +18,6 @@ function Categories({categorie,setCategories}) {
                     
             </select>
             <button onClick={()=>setCategories('all')}>Reinitialiser</button>
-
         </div>
     )
 }
