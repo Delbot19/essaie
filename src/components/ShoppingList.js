@@ -21,7 +21,7 @@ function ShoppingList({ cart, updateCart }) {
 
 
     return (
-        <div>
+        <div className='shopping-list '>
             <Categories categorie={categorie} setCategories={setCategories} />
 
             <ul className='plant-list'>
