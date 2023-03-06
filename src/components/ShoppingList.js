@@ -7,9 +7,9 @@ import PlantItem from './PlantItem'
 function ShoppingList({ cart, updateCart }) {
     
     function addToCart(name,price){
-        const currentPlantSaved= cart.reduce((find,plant)=>plant.name==name ? plant: find,{})
+        const currentPlantSaved= cart.reduce((find,plant)=>plant.name===name ? plant: find,{})
         if(Object.keys(currentPlantSaved).length){
-            const cartFilteredCurrentPlant=cart.filter(elem=>elem.name!=name)
+            const cartFilteredCurrentPlant=cart.filter(elem=>elem.name!==name)
             updateCart([...cartFilteredCurrentPlant,{name,price,amount:currentPlantSaved.amount+1}])
         }
         else {
@@ -33,6 +33,7 @@ function ShoppingList({ cart, updateCart }) {
 						name={name}
 						water={water}
 						light={light}
+                        price={price}
 					/>
                     <button onClick={() => addToCart(name,price)}>Ajouter</button>
                     </div>
