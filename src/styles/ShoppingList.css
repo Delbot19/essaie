@@ -9,3 +9,10 @@
 	flex-wrap: wrap;
 	justify-content: center;
 }
+
+.items-btn{
+	display: flex;
+	justify-content: space-between;
+	width: 90%;
+	margin: auto;
+}
